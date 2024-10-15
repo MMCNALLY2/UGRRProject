@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Splash Page</title>
+<style>
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    font-family: "Tiempos Fine Bold", Georgia, serif;
+    background: url("background.png") no-repeat center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: ""; /* Necessary for the pseudo-element to show */
+    position: fixed; /* Position it over the body */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay; adjust opacity as needed */
+    z-index: -1; /* Ensures the overlay is behind the content */
+}
+
+/* Container Styles */
+.container {
+    display: flex;
+    flex-direction: row; /* Horizontal layout on large screens */
+    width: 100%;
+    justify-content: center; /* Evenly space out the items */
+    flex-wrap: wrap; /* Allows flex items to wrap as needed */
+    padding: 0 ;
+}
+
+/* Button Styles */
+.tour-buttons {
+    flex: 1 0 40%; /* Each button flexes to fill space but starts at 40% */
+    margin: 30px; /* Space between buttons */
+    display: flex;
+    flex-direction: column; /* Stack image and text vertically */
+    align-items: center; /* Center content horizontally */
+    justify-content: flex-start;
+    
+}
+
+.tour-buttons a {
+    border-radius: 50%; /* Make the divs circular */
+    aspect-ratio: 1 / 1;
+    box-shadow: 0 2vw 4vw rgba(0, 0, 0, 0.53);
+    display: block; /* Block display to fill the width of the parent */
+    width: 70%; /* Full width */
+    overflow: hidden; /* Hide overflow */
+    transition: transform 0.5s ease;
+    position: relative;
+}
+
+.tour-buttons a:hover {
+    transform: scale(1.1);
+}
+
+.tour-buttons img {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: absolute; /* Makes the image stay in place regardless of text */
+    top: 0; /* Align image to the top of the container */
+    left: 0; /* Align image to the left of the container */
+    right: 0; /* Align image to the right of the container */
+    bottom: 0; /* Ensure image covers the area specified */
+    object-fit: cover;
+}
+
+.tour-buttons h1 {
+    margin-top: 20px; /* Space between the image and the text */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 800px) {
+    .container {
+        flex-direction: column; /* Stack buttons vertically on small screens */
+    }
+
+    .tour-buttons {
+        width: 80%; /* Full width buttons on smaller screens */
+        margin: 10px auto;
+    }
+}
+
+h1, h2 {
+    color: #fff; /* Light color for better visibility on dark backgrounds */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Text shadow for depth */
+    transition: color 0.5s ease; /* Smooth transition for color change */
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 4rem); /* Responsive font size using clamp */
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+h2 {
+    font-size: clamp(1.5rem, 3vw, 2.5rem); /* Smaller than h1 but still significant */
+    opacity: 0.8; /* Slightly transparent */
+    margin-top: 30px;
+    margin-bottom: 10px; /* Space below h2 before content */
+    position: relative; /* Position relative to the button container */
+    z-index: 10; /* Ensure text is above the image */
+}
+
+h1:hover {
+    color: #ffc107; /* Gold color on hover for a highlight effect */
+}
+</style>
+</head>
+<body>
+
+<h1>Oswego Historical Society Driving Tours</h1>
+<h2>Choose a Tour to begin!</h2>
+<!-- Tour buttons -->
+<div class="container">
+    <div class="tour-buttons">
+        <a href="https://oswegohistory.tours/">
+            <img src="MaryWalker.png" alt="Mary Walker Tour">
+        </a>
+        <h2>Dr. Mary Walker Tour</h2>
+    </div>
+    
+    <div class="tour-buttons">
+        <a href="UGRRHOME.html">
+            <img src="logo.png" alt="Underground Railroad Tour">
+        </a>
+        <h2>Underground Railroad Tour</h2>
+    </div>
+</div>
+
+</body>
+</html>

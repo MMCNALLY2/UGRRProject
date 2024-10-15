@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Location Template</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    width: 100%;
+    height: 100px; /* Ensure sufficient height for content */
+    background: #0b1215;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between; /* Separates logo container and navigation links */
+    align-items: center; /* Centers items vertically */
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center; /* Ensures vertical centering of logo and text */
+}
+
+.logo-container a {
+    display: flex;
+    align-items: center; /* Further ensures vertical centering within the link */
+    text-decoration: none; /* Removes underline from link */
+}
+
+nav img {
+    height: 80px; /* Adjust size to fit within the nav bar height */
+    width: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Space between the logo and the text */
+}
+
+nav span {
+    color: white; /* Text color */
+    font-size: 1.5rem; /* Text size */
+    transition: color 0.3s ease;
+}
+
+nav span:hover{
+    color: yellowgreen;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1rem;
+    transition: color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+nav a:hover {
+    color: yellowgreen; /* Lighter color on hover */
+}
+
+.right-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px; /* Increased margin between links */
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.right-links a:hover {
+    color: yellowgreen;
+}
+
+iframe{
+    display: block; /* Ensures the element is block-level */
+    margin: 100px auto 0; /* Top and bottom margin 100px, and auto margin on the sides centers it horizontally */
+    width: 95%; /* Adjust width as needed */
+    height: 60vh; /* Adjust height as needed */
+    box-shadow: -3px 5.5px 10px 3px #000000;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 800px) {
+    nav {
+        flex-direction: column;
+        height: auto; /* Adjust height for stacked layout */
+        padding: 10px;
+    }
+    .right-links {
+        margin-top: 10px; /* Adds space between logo and links on smaller screens */
+    }
+    iframe{
+        margin-top: 125px;
+    }
+}
+
+footer {
+    background-color: #000;
+    color: #fff;
+    width: 100%;
+    display: flex; /* Enables flexbox */
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+    padding: 20px 0; /* Adds some padding inside the footer */
+    text-align: center; /* Ensures text within the footer is centered */
+}
+
+.container {
+    display: flex;
+    flex-direction: row; /* Align items horizontally */
+    width: 100%;
+    align-items: stretch; /* Ensure that the children stretch to fill the container */
+    justify-content: center; /* Evenly space out the items */
+    flex-wrap: wrap; /* Allows flex items to wrap as needed */
+    text-align: left;
+    box-sizing: border-box;
+    padding: 2% 3%; /* Default padding */
+}
+
+.text-content, .image-content {
+    flex: 1 1 50%; /* Each takes half of the container's width */
+    padding: 20px;
+    box-sizing: border-box;
+    
+}
+
+.text-content {
+    color: #000000;
+    overflow: auto; /* Ensures scrollbar appears if content overflows */
+    box-shadow: -3px 5.5px 10px 3px #000000;
+    background-image: url('bgimg4.png');
+    background-size: cover;
+    background-position: center;
+    padding: 30px;
+    line-height: 1.3;
+}
+
+.image-content {
+    overflow-y: auto; /* Ensures vertical scrollbar appears if content overflows */
+    max-height: 1200px; 
+    align-items: center;
+    text-align: center;
+    font-size: clamp(1rem, 3vw, 1.5rem); /* Responsive font size using clamp */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+.image-content img {
+    width: 100%; /* Images take the full width of their container */
+    max-width: 100%; /* Ensure images do not exceed their container's width */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Spacing between images */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5); 
+}
+
+/* Media Query for Smaller Screens */
+@media (max-width: 800px) {
+    .container {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+    }
+    .text-content, .image-content {
+        flex: 1 1 100%; /* Each takes full width of the container */
+    }
+}
+
+body {
+    font-family: "Tiempos Fine Bold", Georgia, serif;
+    margin: 0;
+    padding: 0;
+    background: url("tablebg.png") repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#speechButtonSummary, #stopButton {
+    width: 175px;
+    height: 50px;
+    display: inline-block;
+    margin: 20px;
+    background-color: rgba(56, 110, 235, 0.949);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 18px;
+}
+
+#stopButton {
+    background-color: #c34747; /* Just changing the color for the stop button */
+}
+.button-container {
+    display: flex;           /* Enable Flexbox */
+    justify-content: center; /* Center buttons horizontally */
+    align-items: center;     /* Align items vertically in the center, if needed */
+}
+</style>
+<!-------------------------------------------------------------------------------->
+<script src="locationData.js"></script>
+<!-------------------------------------------------------------------------------->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Function to set the title based on the name parameter in the URL
+    function setTitleFromURL() {
+        var urlParams =  new URLSearchParams(window.location.search);
+        var name = urlParams.get('name');
+        if (name) {
+            document.title = name;
+        }
+}
+    // Call the function to set the title from the URL
+    setTitleFromURL();
+});
+</script>
+<!------------------------------------------------------------------------------->
+<script>
+function speakText() {
+    const message = new SpeechSynthesisUtterance();
+    message.text = document.getElementById('description-paragraph').innerText;
+    const speechSynthesis = window.speechSynthesis;
+    speechSynthesis.speak(message);
+}
+function stopSpeech() {
+    window.speechSynthesis.cancel();
+}
+</script>
+<!-------------------------------------------------------------------------------->
+<script>
+    function parseTextFile(data, searchName) {
+// Check if the data is an array
+if (!Array.isArray(data)) {
+    console.error('Invalid data format. Expected an array.');
+    return;
+}
+// Find the location based on searchName
+var location = data.find(loc => loc.name === searchName);
+// If location is not found, display a message
+if (!location) {
+    console.error('Location not found:', searchName);
+    document.getElementById('output').innerHTML = 'Location not found';
+    return;
+}
+// Generate HTML markup for the found location
+var name = location.name;
+var address = location.address;
+var narrative = location.narrative;
+var link1 = location.link1;
+var link2 = location.link2;
+var map = location.map;
+var access = location.access;
+var htmlContent = `
+<nav>
+    <div class="logo-container">
+        <a href="index.html">
+            <img src="logo.png" alt="Website Logo">
+            <span>Oswego History Tours</span>
+        </a>
+    </div>
+    <div class="right-links">
+        <a href="UGRRMapPage.html">Back to Map</a>
+        <a href="UGRRHOME.html">Home</a>
+        <a href="https://oswegohistorical.org/contact/">Contact</a>
+    </div>
+</nav>
+
+<iframe style="border: 2px solid black;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="${map}"></iframe>  
+
+<div class="container">
+
+    <div class="text-content">
+        <br>
+        <h1>Location of ${name}</h1>
+        <h3><strong>Address:</strong> ${address}</h3>
+        <h3><strong>Access:</strong> <i>${access}</i></h3>
+        <br>
+        <h3><strong>Learn More:</strong></h3> <a href=${link1} target="_blank">${link1}</a>
+        <h3><strong></strong></h3> <a href=${link2} target="_blank">${link2}</a>
+        <br>
+        <p id="description-paragraph" style="text-align: justify"><strong>${narrative}</strong></p>
+        <br>
+        <div class="button-container">
+            <button id="speechButtonSummary">Listen to Text</button>
+            <button id="stopButton">Stop Speech</button>
+        </div>
+    </div>
+    
+    <div class="image-content">
+        <h2>Photos of ${name}</h2>
+        <br>
+        <img src="Site_Photos/${name} 1.jpg" onerror="this.src='Image Error 2.png'" alt="Image 1">
+        <img src="Site_Photos/${name} 2.jpg" onerror="this.style.display='none'" alt="Image 2">
+        <img src="Site_Photos/${name} 3.jpg" onerror="this.style.display='none'" alt="Image 3">
+        <img src="Site_Photos/${name} 4.jpg" onerror="this.style.display='none'" alt="Image 4">
+        <img src="Site_Photos/${name} 5.jpg" onerror="this.style.display='none'" alt="Image 5">
+        <img src="Site_Photos/${name} 6.jpg" onerror="this.style.display='none'" alt="Image 6">
+        <img src="Site_Photos/${name} 7.jpg" onerror="this.style.display='none'" alt="Image 7">
+        <img src="Site_Photos/${name} 8.jpg" onerror="this.style.display='none'" alt="Image 8">
+        <img src="Site_Photos/${name} 9.jpg" onerror="this.style.display='none'" alt="Image 9">
+        <img src="Site_Photos/${name} 10.jpg" onerror="this.style.display='none'" alt="Image 10">
+        <!-- Add more images as needed -->
+    </div>
+
+</div>
+
+<footer>
+    <p>Oswego County Historical Society © 2024 <br> Designed by <a href="Studentpage.html"><u>SUNY Oswego Students</u></a> </p>    
+</footer>
+`;
+        // Output HTML content to the page
+        console.log('Generated HTML content:', htmlContent); // Log generated HTML content
+        document.getElementById('output').innerHTML = htmlContent;
+        document.getElementById('speechButtonSummary').addEventListener('click', speakText);
+        document.getElementById('stopButton').addEventListener('click', stopSpeech);
+    }
+// Function to handle user input
+document.addEventListener("DOMContentLoaded", function() {
+function handleInput() {
+    var searchName = document.title; // Get the title of the site
+    // Call the parseTextFile function with the array and searchName
+    parseTextFile(locationData, searchName);
+}
+// Call handleInput() when the site is loaded
+handleInput();
+});
+</script>
+<!------------------------------------------------------------------------------------>
+</head>
+<body>
+<div id="output"></div> 
+</body>
+</html>

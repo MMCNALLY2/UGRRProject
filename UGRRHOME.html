@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oswego Underground Railroad Driving Tour</title>
+<style>
+.slideshow-container {
+    max-height: 100%;
+    position: relative;
+    margin: auto;
+    padding-top: 15vh;
+}
+
+.mySlides {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 85%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    box-shadow: 0 4px 8px rgb(0, 0, 0, 0.2);
+    font-weight: bold;
+    font-size: 3rem;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.next {
+    right: 10vw;
+    border-radius: 3px 0 0 3px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.prev {
+    left: 10vw;
+    border-radius: 3px 0 0 3px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5); 
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    font-family: "Tiempos Fine Bold", Georgia, serif;
+    background: url("bgimg.png") no-repeat center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.container, .info-container {
+    display: flex;
+    flex-direction: row; /* Horizontal layout on large screens */
+    width: 100%;
+    justify-content: center; /* Evenly space out the items */
+    flex-wrap: wrap; /* Allows flex items to wrap as needed */
+    text-align: left;
+    box-sizing: border-box;
+    padding: 2% 18%; /* Default padding */
+}
+
+.container h3, p{
+    line-height: 1.5;
+}
+
+.info-container{
+    background-color: rgb(126, 131, 117);
+    box-shadow: -3px 5.5px 10px 3px #000000;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .container, .info-container {
+        padding: 2% 12%; /* Slightly less padding for medium screens */
+    }
+}
+
+@media (max-width: 992px) {
+    .container, .info-container {
+        padding: 2% 8%; /* Reduced padding for small desktops and tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .container, .info-container {
+        padding: 2% 4%; /* Minimal padding for smaller devices */
+    }
+}
+
+nav {
+    width: 100%;
+    height: 100px; /* Ensure sufficient height for content */
+    background: #0b1215;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between; /* Separates logo container and navigation links */
+    align-items: center; /* Centers items vertically */
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center; /* Ensures vertical centering of logo and text */
+}
+
+.logo-container a {
+    display: flex;
+    align-items: center; /* Further ensures vertical centering within the link */
+    text-decoration: none; /* Removes underline from link */
+}
+
+nav img {
+    height: 80px; /* Adjust size to fit within the nav bar height */
+    width: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Space between the logo and the text */
+    box-shadow: none;
+}
+
+nav span {
+    color: white; /* Text color */
+    font-size: 1.5rem; /* Text size */
+    transition: color 0.3s ease;
+}
+
+nav span:hover{
+    color: yellowgreen;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1rem;
+    transition: color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+nav a:hover {
+    color: yellowgreen; /* Lighter color on hover */
+}
+
+/* Right-side links container for Home and Contact */
+.right-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px; /* Increased margin between links */
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.right-links a:hover {
+    color: yellowgreen;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 800px) {
+    nav {
+        flex-direction: column;
+        height: auto; /* Adjust height for stacked layout */
+        padding: 10px;
+    }
+    .right-links {
+        margin-top: 10px; /* Adds space between logo and links on smaller screens */
+    }
+}
+
+footer{
+    background-color: #000;
+    color: #fff;
+    width: 100%;
+}
+
+.a-button {
+    position: relative;
+    width: 250px;
+    height: 60px;
+    background-color: #333; /* Dark background for contrast */
+    overflow: hidden;
+    color: white;
+    border: 2px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    margin: 20px 10px;
+    margin-top: 30px;
+    border-radius: 25px;
+    border: 2px solid #000;
+    text-decoration: none; /* Removes underline from <a> */
+    cursor: pointer;
+    z-index: 1;
+}
+
+.a-button span {
+    font-size: 30px; /* Changed from 2vh to a fixed pixel size */
+    color: white;
+}
+
+/* Pseudo-elements for animated border effect */
+.a-button::before {
+    content: '';
+    position: absolute;
+    top: -50%; /* Larger than the element to cover completely */
+    left: -50%;
+    width: 200%; /* Wide enough to cover the entire button when moving */
+    height: 200%;
+    background: rgba(255, 255, 255, 0.2); /* Lighter overlay for moving highlight */
+    filter: blur(50px); /* Soften the edges of the pseudo-element */
+    transform: rotate(30deg); /* Diagonal movement */
+    animation: moveHighlight 10s linear infinite;
+    z-index: -1; /* Keeps this layer behind the text */
+    
+}
+
+.a-button:hover::before {
+    animation-play-state: running;
+}
+
+@keyframes moveHighlight {
+    0% {
+        transform: translateX(-50%) rotate(30deg);
+    }
+    100% {
+        transform: translateX(150%) rotate(30deg);
+    }
+}
+
+h1, h2 {
+    color: black; /* Light color for better visibility on dark backgrounds */
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6); /* Text shadow for depth */
+    text-align: center;
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 4rem); /* Responsive font size using clamp */
+    -webkit-text-stroke: .5px #fff;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+h2 {
+    font-size: clamp(1.5rem, 3vw, 2.5rem); /* Smaller than h1 but still significant */
+    opacity: 0.9; /* Slightly transparent */
+    margin-top: 30px;
+    margin-bottom: 10px; /* Space below h2 before content */
+    position: relative; /* Position relative to the button container */
+    z-index: 10; /* Ensure text is above the image */
+}
+</style>
+<!--------------------------------------------------------------------------------->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Function to advance to the next or previous slide
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    // Function to show the current slide (used for dots or direct selection if applicable)
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    // Main function to show the slides
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        if (n > slides.length) slideIndex = 1;
+        if (n < 1) slideIndex = slides.length;
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[slideIndex-1].style.display = "block";
+    }
+
+    // Automatic slideshow
+    var autoSlide = setInterval(function() {
+        plusSlides(1);
+    }, 7000);
+
+    // Stop the slideshow when clicking on navigation buttons
+    var prevButton = document.querySelector('.prev');
+    var nextButton = document.querySelector('.next');
+
+    prevButton.addEventListener('click', function() {
+        plusSlides(-1);
+        resetTimer();
+    });
+
+    nextButton.addEventListener('click', function() {
+        plusSlides(1);
+        resetTimer();
+    });
+
+    // Reset the timer when manually navigating slides
+    function resetTimer() {
+        clearInterval(autoSlide);
+        autoSlide = setInterval(function() {
+            plusSlides(1);
+        }, 7000);
+    }
+});
+</script>
+<!------------------------------------------------------------------------------------>
+</head>
+<body>
+<nav>
+    <div class="logo-container">
+        <a href="index.html">
+            <img src="logo.png" alt="Website Logo">
+            <span>Oswego History Tours</span>
+        </a>
+    </div>
+    <div class="right-links">
+        <a href="UGRRHOME.html">Home</a>
+        <a href="https://oswegohistorical.org/contact/">Contact</a>
+    </div>
+</nav>
+
+<div class="slideshow-container">
+        <h1>UNDERGROUND RAILROAD DRIVING TOUR</h1>
+        <h2>Explore Oswego County's Underground Railroad History Today!</h2>
+
+        <div class="mySlides">
+            <img src="1.png">
+        </div>
+        <div class="mySlides">
+            <img src="2.png">
+        </div>
+        <div class="mySlides">
+            <img src="3.png">
+        </div>
+        <div class="mySlides">
+            <img src="4.png">
+        </div>
+        <div class="mySlides">
+            <img src="5.png">
+        </div>
+
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+</div>
+<a href = "UGRRmapPage.html" class="a-button">
+    <span>Begin</span>
+</a>
+<div class = "container">
+    <h2>Did you know that Oswego County has the second most documented Underground Railroad sites in the country?</h2>
+
+    <h3><strong>This tour was created from extensive research in period documents,
+        letters and newspapers done in 1998-2002 for a project called Freedom Trail. The main researchers
+        and writers were Judith Wellman, Barbara Dix, and Helen Breitbeck. They created a pamphlet driving
+        tour, interpretive panels, and historic markers at 34 verified sites. Most of the narratives in the
+        tour are created from their writings.</strong></h3>
+
+    <p><strong>There are two eras in the history of the Underground Railroad in New York. 
+        Before 1850: Most northern states gradually abolished slavery in the first half of the 1800’s (New York in 1817) and if a person escaped into a free state in the north, they were generally considered safe. Many black families settled in Oswego County in the 1830s and 40s because this part of the country was known to be liberal, progressive, and sympathetic to the abolition of slavery. Several became businessmen and were active in the abolition movement. 
+        After 1850: When the Fugitive Slave Act was passed in 1850, the area became more dangerous for African Americans. The law required that slaves be returned to their owners, even if they were in a free state. It also made the federal government responsible for finding, returning, and trying escaped slaves. So Underground Railroad routes were created into Canada. 
+        The Port of Oswego was an important departure point after 1850. Freedom seekers embarking on the right steamer here ended up in Kingston or Toronto, Ontario. 
+        Another escape route through the county beside the Oswego Canal, started in Syracuse, extended north on the Salt Road (New York State Route 11) turned at Colosse and came into Mexico (today’s Route 69). Then instead of coming into the city of Oswego, the route  went north on Route 3 to Henderson Harbor, Sackett’s Harbor, or even a further distance down the river. 
+        The abolitionists who ran the routes were very organized and communicated extensively with each other. Freedom seekers were hidden in homes and outbuildings, and transported in carts, usually at night. Stories about tunnels and all kinds of elaborate, secret rooms are exaggerated myths.
+        The sites on this tour are the verified way stations in individual homes or residences and commercial buildings associated with a person or event important in the Underground Railroad.
+        Pick a point to start and take any path you choose to discover this engaging history of Oswego County. 
+    </strong></p>   
+</div>
+
+<div class = info-container>
+<h3>Additional Information</h3>
+
+<p>
+    The Oswego County Historical Society is a non-profit corporation organized with a mission to discover, collect, preserve and interpret materials and objects of the history of Oswego County, to sponsor writings and publications, and to promote public interest in Oswego County’s historical resources.
+    Founded in 1896, the society has collected and maintained thousands of artifacts, photographs and manuscript collections that document the county’s rich history. In 1946, the historical society received the generous gift of a historic 19th century Tuscan Villa style residence to serve as a permanent headquarters and public museum. Since that time the society has operated the magnificent Richardson-Bates House Museum, a landmark listed on the National Register of Historic Places, at 135 East Third Street in the Washington Square Historic District. This distinctive residence offers a unique glimpse into the opulent lifestyle of a prominent Oswego family and serves as a museum dedicated to interpreting the history of the people, places and events of Oswego County through exhibits and educational programs.
+</p>
+</div>
+
+<footer>
+    <p>Oswego County Historical Society © 2024 <br> Designed by <a href="Studentpage.html"><u>SUNY Oswego Students</u></a> </p>    
+</footer>
+</body>
+</html>
